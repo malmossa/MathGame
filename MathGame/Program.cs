@@ -1,7 +1,9 @@
-﻿using System.Threading.Channels;
+﻿
 using static System.Formats.Asn1.AsnWriter;
 
 DateTime date = DateTime.Now;
+
+List<string> games = new List<string>();
 
 string name = GetName();
 
@@ -24,17 +26,21 @@ void Menu(string name)
     {
         Console.Clear();
         Console.WriteLine(@$"What game would you like to play today? Choose from the options below:
-                       A - Addition.
-                       S - Subtraction.
-                       M - Multiplication.
-                       D - Division.
-                       Q - Quit the program.");
+         V - View Previous Game.
+         A - Addition.
+         S - Subtraction.
+         M - Multiplication.
+         D - Division.
+         Q - Quit the program.");
         Console.WriteLine("---------------------------------");
 
         string gameSelected = Console.ReadLine();
 
         switch (gameSelected.Trim().ToLower())
         {
+            case "v":
+                GetGames();
+                break;
             case "a":
                 AdditionGame("Addition game ");
                 break;
@@ -62,6 +68,20 @@ void Menu(string name)
 
 }
 
+void GetGames()
+{
+    Console.Clear();
+    Console.WriteLine("Games History");
+    Console.WriteLine("-------------------");
+    foreach (string game in games)
+    {
+        Console.WriteLine(game);
+    }
+    Console.WriteLine("-------------------\n");
+    Console.WriteLine("Press any key to retirn to Main Menu");
+    Console.ReadLine();
+}
+
 void AdditionGame(string message)
 {
     Console.WriteLine(message);
@@ -87,7 +107,7 @@ void AdditionGame(string message)
         else
         {
             Console.WriteLine("Your answer was incorrect. Type any key for next question.");
-            score++; Console.ReadLine();
+            Console.ReadLine();
         }
 
         if (i == 4)
@@ -97,6 +117,12 @@ void AdditionGame(string message)
         }
     }
 
+    AddToHistory(score, "Addition");
+}
+
+void AddToHistory(int gameScore, string gameType)
+{
+    games.Add($"{DateTime.Now} - {gameType} : {gameScore} pts");
 }
 
 void SubtractionGame(string message)
@@ -124,11 +150,13 @@ void SubtractionGame(string message)
         else
         {
             Console.WriteLine("Your answer was incorrect. Type any key for next question.");
-            score++; Console.ReadLine();
+            Console.ReadLine();
         }
 
         if (i == 4) Console.WriteLine($"Game over. Your final score is {score}");
     }
+
+    AddToHistory(score, "Subtraction");
 }
 
 void Multiplication(string message)
@@ -156,11 +184,13 @@ void Multiplication(string message)
         else
         {
             Console.WriteLine("Your answer was incorrect. Type any key for next question.");
-            score++; Console.ReadLine();
+            Console.ReadLine();
         }
 
         if (i == 4) Console.WriteLine($"Game over. Your final score is {score}");
     }
+
+    AddToHistory(score, "Multiplication");
 }
 
 void Division(string message)
@@ -186,11 +216,13 @@ void Division(string message)
         else
         {
             Console.WriteLine("Your answer was incorrect. Type any key for next question.");
-            score++; Console.ReadLine();
+            Console.ReadLine();
         }
 
         if (i == 4) Console.WriteLine($"Game over. Your final score is {score}");
     }
+
+    AddToHistory(score, "Division");
 }
 
 
