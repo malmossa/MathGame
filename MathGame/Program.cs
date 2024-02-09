@@ -6,6 +6,9 @@ MenuOptions();
 Game(name);
 
 
+
+
+
 static void Header()
 {
  Console.WriteLine(@"
@@ -46,7 +49,7 @@ static void GreetingMessage(string name)
 static string GetUserName()
 {
     Console.Write("First, let's get to know you. What is your name? ");
-    string name = Console.ReadLine();
+    string name = Console.ReadLine().ToUpper();
     return name;
 }
 
@@ -76,7 +79,7 @@ static void Game(string name)
             Console.WriteLine("You chose: V");
             break;
         case "A":
-            Console.WriteLine("You chose: A");
+            Add();
             break;
         case "S":
             Console.WriteLine("You chose: S");
@@ -100,6 +103,21 @@ static void Game(string name)
     }
 }
 
+
+static void Add()
+{
+    Random random = new Random();
+
+    Console.Write("How many questions do you want your game to be? ");
+    int userQuestionsChooice = Convert.ToInt32(Console.ReadLine());
+
+    Console.WriteLine(@"What is the numbers range? 
+'A' 1 to 10.
+'B' 1 to 50.
+'C' 1 to 100");
+
+  
+}
 
 
 
