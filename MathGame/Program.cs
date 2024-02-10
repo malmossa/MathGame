@@ -7,9 +7,7 @@ Game(name);
 
 
 
-
-
-static void Header()
+void Header()
 {
  Console.WriteLine(@"
                                    _   _     
@@ -23,7 +21,7 @@ static void Header()
 }
 
 
-static void GreetingMessage(string name)
+void GreetingMessage(string name)
 {
     Console.WriteLine();
     DateTime time = DateTime.Now;
@@ -46,14 +44,14 @@ static void GreetingMessage(string name)
 }
 
 
-static string GetUserName()
+string GetUserName()
 {
     Console.Write("First, let's get to know you. What is your name? ");
     string name = Console.ReadLine().ToUpper();
     return name;
 }
 
-static void MenuOptions()
+void MenuOptions()
 {
     Console.WriteLine(@"
 'V' View previous games.
@@ -66,7 +64,7 @@ static void MenuOptions()
 }
 
 
-static void Game(string name)
+void Game(string name)
 {
     Console.WriteLine();
 
@@ -104,19 +102,53 @@ static void Game(string name)
 }
 
 
-static void Add()
+void Add()
 {
     Random random = new Random();
+    int randomNumber_1 = 0;
+    int randomNumber_2 = 0;
+    int numberOfQuestionsAsked = 0;
 
     Console.Write("How many questions do you want your game to be? ");
-    int userQuestionsChooice = Convert.ToInt32(Console.ReadLine());
+    int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
 
-    Console.WriteLine(@"What is the numbers range? 
-'A' 1 to 10.
-'B' 1 to 50.
-'C' 1 to 100");
+    Console.Write("What is the numbers range? 'A' 1 to 10. 'B' 1 to 50. 'C' 1 to 100. Your choise: " );
+    string userChoice = Console.ReadLine().Trim().ToUpper();
 
-  
+    switch(userChoice)
+    {
+        case "A":
+            while(numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                randomNumber_1 = random.Next(1, 10);
+                randomNumber_2 = random.Next(1, 10);
+                Console.Write($"What is {randomNumber_1} + {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if ((randomNumber_1 + randomNumber_2) == userAnswer)
+                {
+                    Console.WriteLine($"That is currect, Great job.");
+                    numberOfQuestionsAsked++;
+                } else
+                {
+                    Console.WriteLine($"That is NOT currect, That is stupid");
+                    numberOfQuestionsAsked++;
+                }
+            }
+            Console.WriteLine("Do you want to play again? ");
+            break;
+        case "B":
+            randomNumber_1 = random.Next(1, 50);
+            randomNumber_2 = random.Next(1, 50);
+            break;
+        case "C":
+            randomNumber_1 = random.Next(1, 100);
+            randomNumber_2 = random.Next(1, 100);
+            break;
+    }
+
+   
+        
 }
 
 
