@@ -80,10 +80,10 @@ void Game(string name)
             Add();
             break;
         case "S":
-            Console.WriteLine("You chose: S");
+            Subtract();
             break;
         case "M":
-            Console.WriteLine("You chose: M");
+            Multiply();
             break;
         case "D":
             Console.WriteLine("You chose: D");
@@ -131,27 +131,305 @@ void Add()
                     numberOfQuestionsAsked++;
                 } else
                 {
-                    Console.WriteLine($"That is NOT currect, That is stupid");
+                    Console.WriteLine($"That is NOT currect, Good luck next time");
                     numberOfQuestionsAsked++;
                 }
             }
             Console.WriteLine("Do you want to play again? ");
             break;
         case "B":
-            randomNumber_1 = random.Next(1, 50);
-            randomNumber_2 = random.Next(1, 50);
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                randomNumber_1 = random.Next(1, 50);
+                randomNumber_2 = random.Next(1, 50);
+                Console.Write($"What is {randomNumber_1} + {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if ((randomNumber_1 + randomNumber_2) == userAnswer)
+                {
+                    Console.WriteLine($"That is currect, Great job.");
+                    numberOfQuestionsAsked++;
+                }
+                else
+                {
+                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    numberOfQuestionsAsked++;
+                }
+            }
+            Console.WriteLine("Do you want to play again? ");
             break;
         case "C":
-            randomNumber_1 = random.Next(1, 100);
-            randomNumber_2 = random.Next(1, 100);
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                randomNumber_1 = random.Next(1, 100);
+                randomNumber_2 = random.Next(1, 100);
+                Console.Write($"What is {randomNumber_1} + {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if ((randomNumber_1 + randomNumber_2) == userAnswer)
+                {
+                    Console.WriteLine($"That is currect, Great job.");
+                    numberOfQuestionsAsked++;
+                }
+                else
+                {
+                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    numberOfQuestionsAsked++;
+                }
+            }
+            Console.WriteLine("Do you want to play again? ");
             break;
     }
-
-   
-        
+      
 }
 
 
+void Subtract()
+{
+    Random random = new Random();
+    int randomNumber_1 = 0;
+    int randomNumber_2 = 0;
+    int numberOfQuestionsAsked = 0;
 
+    Console.Write("How many questions do you want your game to be? ");
+    int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("What is the numbers range? 'A' 1 to 10. 'B' 1 to 50. 'C' 1 to 100. Your choise: ");
+    string userChoice = Console.ReadLine().Trim().ToUpper();
+
+    switch (userChoice)
+    {
+        case "A":
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                randomNumber_1 = random.Next(1, 10);
+                randomNumber_2 = random.Next(1, 10);
+                Console.Write($"What is {randomNumber_1} - {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if ((randomNumber_1 - randomNumber_2) == userAnswer)
+                {
+                    Console.WriteLine($"That is currect, Great job.");
+                    numberOfQuestionsAsked++;
+                }
+                else
+                {
+                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    numberOfQuestionsAsked++;
+                }
+            }
+            Console.WriteLine("Do you want to play again? ");
+            break;
+        case "B":
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                randomNumber_1 = random.Next(1, 50);
+                randomNumber_2 = random.Next(1, 50);
+                Console.Write($"What is {randomNumber_1} - {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if ((randomNumber_1 - randomNumber_2) == userAnswer)
+                {
+                    Console.WriteLine($"That is currect, Great job.");
+                    numberOfQuestionsAsked++;
+                }
+                else
+                {
+                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    numberOfQuestionsAsked++;
+                }
+            }
+            Console.WriteLine("Do you want to play again? ");
+            break;
+        case "C":
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                randomNumber_1 = random.Next(1, 100);
+                randomNumber_2 = random.Next(1, 100);
+                Console.Write($"What is {randomNumber_1} - {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if ((randomNumber_1 - randomNumber_2) == userAnswer)
+                {
+                    Console.WriteLine($"That is currect, Great job.");
+                    numberOfQuestionsAsked++;
+                }
+                else
+                {
+                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    numberOfQuestionsAsked++;
+                }
+            }
+            Console.WriteLine("Do you want to play again? ");
+            break;
+    }
+}
+
+void Multiply()
+{
+    Random random = new Random();
+    int randomNumber_1 = 0;
+    int randomNumber_2 = 0;
+    int numberOfQuestionsAsked = 0;
+
+    Console.Write("How many questions do you want your game to be? ");
+    int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("What is the numbers range? 'A' 1 to 10. 'B' 1 to 50. 'C' 1 to 100. Your choise: ");
+    string userChoice = Console.ReadLine().Trim().ToUpper();
+
+    switch (userChoice)
+    {
+        case "A":
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                randomNumber_1 = random.Next(1, 10);
+                randomNumber_2 = random.Next(1, 10);
+                Console.Write($"What is {randomNumber_1} x {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if ((randomNumber_1 * randomNumber_2) == userAnswer)
+                {
+                    Console.WriteLine($"That is currect, Great job.");
+                    numberOfQuestionsAsked++;
+                }
+                else
+                {
+                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    numberOfQuestionsAsked++;
+                }
+            }
+            Console.WriteLine("Do you want to play again? ");
+            break;
+        case "B":
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                randomNumber_1 = random.Next(1, 50);
+                randomNumber_2 = random.Next(1, 50);
+                Console.Write($"What is {randomNumber_1} x {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if ((randomNumber_1 * randomNumber_2) == userAnswer)
+                {
+                    Console.WriteLine($"That is currect, Great job.");
+                    numberOfQuestionsAsked++;
+                }
+                else
+                {
+                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    numberOfQuestionsAsked++;
+                }
+            }
+            Console.WriteLine("Do you want to play again? ");
+            break;
+        case "C":
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                randomNumber_1 = random.Next(1, 100);
+                randomNumber_2 = random.Next(1, 100);
+                Console.Write($"What is {randomNumber_1} x {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if ((randomNumber_1 * randomNumber_2) == userAnswer)
+                {
+                    Console.WriteLine($"That is currect, Great job.");
+                    numberOfQuestionsAsked++;
+                }
+                else
+                {
+                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    numberOfQuestionsAsked++;
+                }
+            }
+            Console.WriteLine("Do you want to play again? ");
+            break;
+    }
+}
+
+void Random()
+{
+    Random random = new Random();
+    int randomNumber_1 = 0;
+    int randomNumber_2 = 0;
+    int randomOperation = 0;
+    int numberOfQuestionsAsked = 0;
+
+    Console.Write("How many questions do you want your game to be? ");
+    int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("What is the numbers range? 'A' 1 to 10. 'B' 1 to 50. 'C' 1 to 100. Your choise: ");
+    string userChoice = Console.ReadLine().Trim().ToUpper();
+
+    switch (userChoice)
+    {
+        case "A":
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                randomNumber_1 = random.Next(1, 10);
+                randomNumber_2 = random.Next(1, 10);
+                randomOperation = random.Next(1, 4);
+
+
+
+                Console.Write($"What is {randomNumber_1} x {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if ((randomNumber_1 * randomNumber_2) == userAnswer)
+                {
+                    Console.WriteLine($"That is currect, Great job.");
+                    numberOfQuestionsAsked++;
+                }
+                else
+                {
+                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    numberOfQuestionsAsked++;
+                }
+            }
+            Console.WriteLine("Do you want to play again? ");
+            break;
+        case "B":
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                randomNumber_1 = random.Next(1, 50);
+                randomNumber_2 = random.Next(1, 50);
+                Console.Write($"What is {randomNumber_1} x {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if ((randomNumber_1 * randomNumber_2) == userAnswer)
+                {
+                    Console.WriteLine($"That is currect, Great job.");
+                    numberOfQuestionsAsked++;
+                }
+                else
+                {
+                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    numberOfQuestionsAsked++;
+                }
+            }
+            Console.WriteLine("Do you want to play again? ");
+            break;
+        case "C":
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                randomNumber_1 = random.Next(1, 100);
+                randomNumber_2 = random.Next(1, 100);
+                Console.Write($"What is {randomNumber_1} x {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if ((randomNumber_1 * randomNumber_2) == userAnswer)
+                {
+                    Console.WriteLine($"That is currect, Great job.");
+                    numberOfQuestionsAsked++;
+                }
+                else
+                {
+                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    numberOfQuestionsAsked++;
+                }
+            }
+            Console.WriteLine("Do you want to play again? ");
+            break;
+    }
+}
 
 Console.ReadLine();
