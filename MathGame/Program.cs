@@ -18,7 +18,9 @@ void Header()
                   | | | | | | (_| | |_| | | |
   WELCOME TO THE  |_| |_| |_|\__,_|\__|_| |_| GAME
  ");
-  Console.WriteLine("*******************************************************\n");
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine("*******************************************************\n");
+    Console.ResetColor();
 }
 
 
@@ -232,6 +234,9 @@ void Subtract()
     int randomNumber_2 = 0;
     int numberOfQuestionsAsked = 0;
 
+    int correctAnswer = 0;
+    int wrongAnswer = 0;
+
     Console.Write("How many questions do you want your game to be? ");
     int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
 
@@ -241,6 +246,7 @@ void Subtract()
     switch (userChoice)
     {
         case "A":
+
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
                 randomNumber_1 = random.Next(1, 10);
@@ -250,16 +256,28 @@ void Subtract()
 
                 if ((randomNumber_1 - randomNumber_2) == userAnswer)
                 {
-                    Console.WriteLine($"That is currect, Great job.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("CORRECT!");
+                    Console.ResetColor();
+
+                    correctAnswer++;
                     numberOfQuestionsAsked++;
                 }
                 else
                 {
-                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Sorry wrong!");
+                    Console.ResetColor();
+
+                    wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
             }
-            Console.WriteLine("Do you want to play again? ");
+
+            Console.WriteLine();
+            Console.WriteLine("GAME OVER..\n");
+            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+
             break;
         case "B":
             while (numberOfQuestionsAsked != userQuestionsChoice)
@@ -271,16 +289,28 @@ void Subtract()
 
                 if ((randomNumber_1 - randomNumber_2) == userAnswer)
                 {
-                    Console.WriteLine($"That is currect, Great job.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("CORRECT!");
+                    Console.ResetColor();
+
+                    correctAnswer++;
                     numberOfQuestionsAsked++;
                 }
                 else
                 {
-                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Sorry wrong!");
+                    Console.ResetColor();
+
+                    wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
             }
-            Console.WriteLine("Do you want to play again? ");
+
+            Console.WriteLine();
+            Console.WriteLine("GAME OVER..\n");
+            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+
             break;
         case "C":
             while (numberOfQuestionsAsked != userQuestionsChoice)
@@ -292,18 +322,31 @@ void Subtract()
 
                 if ((randomNumber_1 - randomNumber_2) == userAnswer)
                 {
-                    Console.WriteLine($"That is currect, Great job.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("CORRECT!");
+                    Console.ResetColor();
+
+                    correctAnswer++;
                     numberOfQuestionsAsked++;
                 }
                 else
                 {
-                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Sorry wrong!");
+                    Console.ResetColor();
+
+                    wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
             }
-            Console.WriteLine("Do you want to play again? ");
+
+            Console.WriteLine();
+            Console.WriteLine("GAME OVER..\n");
+            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+
             break;
     }
+
 }
 
 void Multiply()
@@ -313,6 +356,9 @@ void Multiply()
     int randomNumber_2 = 0;
     int numberOfQuestionsAsked = 0;
 
+    int correctAnswer = 0;
+    int wrongAnswer = 0;
+
     Console.Write("How many questions do you want your game to be? ");
     int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
 
@@ -322,6 +368,7 @@ void Multiply()
     switch (userChoice)
     {
         case "A":
+
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
                 randomNumber_1 = random.Next(1, 10);
@@ -331,16 +378,28 @@ void Multiply()
 
                 if ((randomNumber_1 * randomNumber_2) == userAnswer)
                 {
-                    Console.WriteLine($"That is currect, Great job.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("CORRECT!");
+                    Console.ResetColor();
+
+                    correctAnswer++;
                     numberOfQuestionsAsked++;
                 }
                 else
                 {
-                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Sorry wrong!");
+                    Console.ResetColor();
+
+                    wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
             }
-            Console.WriteLine("Do you want to play again? ");
+
+            Console.WriteLine();
+            Console.WriteLine("GAME OVER..\n");
+            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+
             break;
         case "B":
             while (numberOfQuestionsAsked != userQuestionsChoice)
@@ -352,16 +411,28 @@ void Multiply()
 
                 if ((randomNumber_1 * randomNumber_2) == userAnswer)
                 {
-                    Console.WriteLine($"That is currect, Great job.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("CORRECT!");
+                    Console.ResetColor();
+
+                    correctAnswer++;
                     numberOfQuestionsAsked++;
                 }
                 else
                 {
-                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Sorry wrong!");
+                    Console.ResetColor();
+
+                    wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
             }
-            Console.WriteLine("Do you want to play again? ");
+
+            Console.WriteLine();
+            Console.WriteLine("GAME OVER..\n");
+            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+
             break;
         case "C":
             while (numberOfQuestionsAsked != userQuestionsChoice)
@@ -373,28 +444,41 @@ void Multiply()
 
                 if ((randomNumber_1 * randomNumber_2) == userAnswer)
                 {
-                    Console.WriteLine($"That is currect, Great job.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("CORRECT!");
+                    Console.ResetColor();
+
+                    correctAnswer++;
                     numberOfQuestionsAsked++;
                 }
                 else
                 {
-                    Console.WriteLine($"That is NOT currect, Good luck next time");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"Sorry wrong!");
+                    Console.ResetColor();
+
+                    wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
             }
-            Console.WriteLine("Do you want to play again? ");
+
+            Console.WriteLine();
+            Console.WriteLine("GAME OVER..\n");
+            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+
             break;
     }
+
 }
 
 void Random()
 {
     Random random = new Random();
-    int randomNumber_1 = 0;
-    int randomNumber_2 = 0;
-
+  
     int numberOfQuestionsAsked = 0;
 
+    int correctAnswer = 0;
+    int wrongAnswer = 0;
 
     Console.Write("How many questions do you want your game to be? ");
     int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
@@ -407,168 +491,380 @@ void Random()
         case "A":
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
-                randomNumber_1 = random.Next(1, 10);
-                randomNumber_2 = random.Next(1, 10);
+                int randomNumber_1 = random.Next(1, 10);
+                int randomNumber_2 = random.Next(1, 10);
                 int randomOperation = random.Next(1, 4);
 
                 string operation = string.Empty;
+
+                switch (randomOperation)
+                {
+                    case 1:
+                        operation = "+";
+                        break;
+                    case 2:
+                        operation = "-";
+                        break;
+                    case 3:
+                        operation = "*";
+                        break;
+                    case 4:
+                        operation = "/";
+                        break;
+                }
+
+                Console.Write($"What is {randomNumber_1} {operation} {randomNumber_2} = ");
+                int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                if (operation == "+")
+                {
+
+                    if ((randomNumber_1 + randomNumber_2) == userAnswer)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("CORRECT!");
+                        Console.ResetColor();
+
+                        correctAnswer++;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Sorry wrong!");
+                        Console.ResetColor();
+
+                        wrongAnswer++;
+                    }
+                  
+                    numberOfQuestionsAsked++;
+                }
+                if (operation == "-")
+                {
+
+                    if ((randomNumber_1 - randomNumber_2) == userAnswer)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("CORRECT!");
+                        Console.ResetColor();
+
+                        correctAnswer++;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Sorry wrong!");
+                        Console.ResetColor();
+
+                        wrongAnswer++;
+                    }
+
+                    numberOfQuestionsAsked++;
+                }
+                if (operation == "*")
+                {
+
+                    if ((randomNumber_1 * randomNumber_2) == userAnswer)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("CORRECT!");
+                        Console.ResetColor();
+
+                        correctAnswer++;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Sorry wrong!");
+                        Console.ResetColor();
+
+                        wrongAnswer++;
+                    }
+
+                    numberOfQuestionsAsked++;
+                }
+                if (operation == "/")
+                {
+                    bool isInteger = true;
+
+                    while (isInteger)
+                    {
+                        randomNumber_1 = random.Next(1, 10);
+                        randomNumber_2 = random.Next(1, 10);
+
+                        if (randomNumber_1 % randomNumber_2 == 0)
+                        {
+                            if ((randomNumber_1 / randomNumber_2) == userAnswer)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.WriteLine("CORRECT!");
+                                Console.ResetColor();
+
+                                correctAnswer++;
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine($"Sorry wrong!");
+                                Console.ResetColor();
+
+                                wrongAnswer++;
+                            }
+                            isInteger = false;
+                        }
+                    }
+
+                    numberOfQuestionsAsked++;
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("GAME OVER..\n");
+            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+            break;
+        //case "B":
+        //    while (numberOfQuestionsAsked != userQuestionsChoice)
+        //    {
+        //        randomNumber_1 = random.Next(1, 50);
+        //        randomNumber_2 = random.Next(1, 50);
+        //        int randomOperation = random.Next(1, 4);
+
+        //        string operation = string.Empty;
+
+        //        switch (randomOperation)
+        //        {
+        //            case 1:
+        //                operation = "+";
+        //                break;
+        //            case 2:
+        //                operation = "-";
+        //                break;
+        //            case 3:
+        //                operation = "*";
+        //                break;
+        //            case 4:
+        //                operation = "/";
+        //                break;
+        //        }
+
+        //        Console.Write($"What is {randomNumber_1} {operation} {randomNumber_2} = ");
+        //        int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+        //        if (operation == "+")
+        //        {                  
+                    
+        //            if ((randomNumber_1 + randomNumber_2) == userAnswer)
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Green;
+        //                Console.WriteLine("CORRECT!");
+        //                Console.ResetColor();
+
+        //                correctAnswer++;
+        //            } else
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Red;
+        //                Console.WriteLine($"Sorry wrong!");
+        //                Console.ResetColor();
+
+        //                wrongAnswer++;
+        //            }
+                  
+        //            numberOfQuestionsAsked++;
+        //        }
+        //        if (operation == "-")
+        //        {                   
+
+        //            if ((randomNumber_1 - randomNumber_2) == userAnswer)
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Green;
+        //                Console.WriteLine("CORRECT!");
+        //                Console.ResetColor();
+
+        //                correctAnswer++;
+        //            }
+        //            else
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Red;
+        //                Console.WriteLine($"Sorry wrong!");
+        //                Console.ResetColor();
+
+        //                wrongAnswer++;
+        //            }
+
+        //            numberOfQuestionsAsked++;
+        //        }
+        //        if (operation == "*")
+        //        {
+                    
+        //            if ((randomNumber_1 * randomNumber_2) == userAnswer)
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Green;
+        //                Console.WriteLine("CORRECT!");
+        //                Console.ResetColor();
+
+        //                correctAnswer++;
+        //            }
+        //            else
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Red;
+        //                Console.WriteLine($"Sorry wrong!");
+        //                Console.ResetColor();
+
+        //                wrongAnswer++;
+        //            }
+
+        //            numberOfQuestionsAsked++;
+        //        }
+        //        if (operation == "/")
+        //        {
+                    
+        //            if ((randomNumber_1 / randomNumber_2) == userAnswer)
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Green;
+        //                Console.WriteLine("CORRECT!");
+        //                Console.ResetColor();
+
+        //                correctAnswer++;
+        //            }
+        //            else
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Red;
+        //                Console.WriteLine($"Sorry wrong!");
+        //                Console.ResetColor();
+
+        //                wrongAnswer++;
+        //            }
+
+        //            numberOfQuestionsAsked++;
+        //        }
+        //    }
+
+        //    Console.WriteLine();
+        //    Console.WriteLine("GAME OVER..\n");
+        //    Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+
+        //    break;
+        //case "C":
+        //    while (numberOfQuestionsAsked != userQuestionsChoice)
+        //    {
+        //        randomNumber_2 = random.Next(1, 100);
+        //        randomNumber_1 = random.Next(1, 100);
+        //        int randomOperation = random.Next(1, 4);
+
+        //        string operation = string.Empty;
+
+        //        switch (randomOperation)
+        //        {
+        //            case 1:
+        //                operation = "+";
+        //                break;
+        //            case 2:
+        //                operation = "-";
+        //                break;
+        //            case 3:
+        //                operation = "*";
+        //                break;
+        //            case 4:
+        //                operation = "/";
+        //                break;
+        //        }
+
+        //        Console.Write($"What is {randomNumber_1} {operation} {randomNumber_2} = ");
+        //        int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+        //        if (operation == "+")
+        //        {
+
+        //            if ((randomNumber_1 + randomNumber_2) == userAnswer)
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Green;
+        //                Console.WriteLine("CORRECT!");
+        //                Console.ResetColor();
+
+        //                correctAnswer++;
+        //            }
+        //            else
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Red;
+        //                Console.WriteLine($"Sorry wrong!");
+        //                Console.ResetColor();
+
+        //                wrongAnswer++;
+        //            }
+
+        //            numberOfQuestionsAsked++;
+        //        }
+        //        if (operation == "-")
+        //        {
+
+        //            if ((randomNumber_1 - randomNumber_2) == userAnswer)
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Green;
+        //                Console.WriteLine("CORRECT!");
+        //                Console.ResetColor();
+
+        //                correctAnswer++;
+        //            }
+        //            else
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Red;
+        //                Console.WriteLine($"Sorry wrong!");
+        //                Console.ResetColor();
+
+        //                wrongAnswer++;
+        //            }
+
+        //            numberOfQuestionsAsked++;
+        //        }
+        //        if (operation == "*")
+        //        {
+
+        //            if ((randomNumber_1 * randomNumber_2) == userAnswer)
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Green;
+        //                Console.WriteLine("CORRECT!");
+        //                Console.ResetColor();
+
+        //                correctAnswer++;
+        //            }
+        //            else
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Red;
+        //                Console.WriteLine($"Sorry wrong!");
+        //                Console.ResetColor();
+
+        //                wrongAnswer++;
+        //            }
+
+        //            numberOfQuestionsAsked++;
+        //        }
+        //        if (operation == "/")
+        //        {
                 
-                switch (randomOperation)
-                {
-                    case 1:
-                        operation = "+"; 
-                        break;
-                    case 2:
-                        operation = "-";
-                        break;
-                    case 3:
-                        operation = "*";
-                        break;
-                    case 4:
-                        operation = "/";
-                        break;
-                }
+        //            if ((randomNumber_1 / randomNumber_2) == userAnswer)
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Green;
+        //                Console.WriteLine("CORRECT!");
+        //                Console.ResetColor();
 
-                Console.Write($"What is {randomNumber_1} {operation} {randomNumber_2} = ");
-                int userAnswer = Convert.ToInt32(Console.ReadLine());
+        //                correctAnswer++;
+        //            }
+        //            else
+        //            {
+        //                Console.ForegroundColor = ConsoleColor.Red;
+        //                Console.WriteLine($"Sorry wrong!");
+        //                Console.ResetColor();
 
-                if (operation == "+")
-                {
-                    string result =(randomNumber_1 + randomNumber_2) == userAnswer ? "That is currect, Great job." : "That is NOT currect, Good luck next time";
-                    Console.WriteLine(result);
-                    numberOfQuestionsAsked++;
-                }    
-                if (operation == "-")
-                {
-                    string result =(randomNumber_1 - randomNumber_2) == userAnswer ? "That is currect, Great job." : "That is NOT currect, Good luck next time";
-                    Console.WriteLine(result);
-                    numberOfQuestionsAsked++;
-                }
-                if (operation == "*")
-                {
-                    string result = (randomNumber_1 * randomNumber_2) == userAnswer ? "That is currect, Great job." : "That is NOT currect, Good luck next time";
-                    Console.WriteLine(result);
-                    numberOfQuestionsAsked++;
-                }
-                if (operation == "/")
-                {
-                    string result = (randomNumber_1 / randomNumber_2) == userAnswer ? "That is currect, Great job." : "That is NOT currect, Good luck next time";
-                    Console.WriteLine(result);
-                    numberOfQuestionsAsked++;
-                }
-            }
-            Console.WriteLine("Do you want to play again? ");
-            break;
-        case "B":
-            while (numberOfQuestionsAsked != userQuestionsChoice)
-            {
-                randomNumber_1 = random.Next(1, 50);
-                randomNumber_2 = random.Next(1, 50);
-                int randomOperation = random.Next(1, 4);
+        //                wrongAnswer++;
+        //            }
 
-                string operation = string.Empty;
+        //            numberOfQuestionsAsked++;
+        //        }
+        //    }
 
-                switch (randomOperation)
-                {
-                    case 1:
-                        operation = "+";
-                        break;
-                    case 2:
-                        operation = "-";
-                        break;
-                    case 3:
-                        operation = "*";
-                        break;
-                    case 4:
-                        operation = "/";
-                        break;
-                }
-
-                Console.Write($"What is {randomNumber_1} {operation} {randomNumber_2} = ");
-                int userAnswer = Convert.ToInt32(Console.ReadLine());
-
-                if (operation == "+")
-                {
-                    string result = (randomNumber_1 + randomNumber_2) == userAnswer ? "That is currect, Great job." : "That is NOT currect, Good luck next time";
-                    Console.WriteLine(result);
-                    numberOfQuestionsAsked++;
-                }
-                if (operation == "-")
-                {
-                    string result = (randomNumber_1 - randomNumber_2) == userAnswer ? "That is currect, Great job." : "That is NOT currect, Good luck next time";
-                    Console.WriteLine(result);
-                    numberOfQuestionsAsked++;
-                }
-                if (operation == "*")
-                {
-                    string result = (randomNumber_1 * randomNumber_2) == userAnswer ? "That is currect, Great job." : "That is NOT currect, Good luck next time";
-                    Console.WriteLine(result);
-                    numberOfQuestionsAsked++;
-                }
-                if (operation == "/")
-                {
-                    string result = (randomNumber_1 / randomNumber_2) == userAnswer ? "That is currect, Great job." : "That is NOT currect, Good luck next time";
-                    Console.WriteLine(result);
-                    numberOfQuestionsAsked++;
-                }
-            }
-            Console.WriteLine("Do you want to play again? ");
-            break;
-        case "C":
-            while (numberOfQuestionsAsked != userQuestionsChoice)
-            {
-                randomNumber_1 = random.Next(1, 100);
-                randomNumber_2 = random.Next(1, 100);
-                int randomOperation = random.Next(1, 4);
-
-                string operation = string.Empty;
-
-                switch (randomOperation)
-                {
-                    case 1:
-                        operation = "+";
-                        break;
-                    case 2:
-                        operation = "-";
-                        break;
-                    case 3:
-                        operation = "*";
-                        break;
-                    case 4:
-                        operation = "/";
-                        break;
-                }
-
-                Console.Write($"What is {randomNumber_1} {operation} {randomNumber_2} = ");
-                int userAnswer = Convert.ToInt32(Console.ReadLine());
-
-                if (operation == "+")
-                {
-                    string result = (randomNumber_1 + randomNumber_2) == userAnswer ? "That is currect, Great job." : "That is NOT currect, Good luck next time";
-                    Console.WriteLine(result);
-                    numberOfQuestionsAsked++;
-                }
-                if (operation == "-")
-                {
-                    string result = (randomNumber_1 - randomNumber_2) == userAnswer ? "That is currect, Great job." : "That is NOT currect, Good luck next time";
-                    Console.WriteLine(result);
-                    numberOfQuestionsAsked++;
-                }
-                if (operation == "*")
-                {
-                    string result = (randomNumber_1 * randomNumber_2) == userAnswer ? "That is currect, Great job." : "That is NOT currect, Good luck next time";
-                    Console.WriteLine(result);
-                    numberOfQuestionsAsked++;
-                }
-                if (operation == "/")
-                {
-                    string result = (randomNumber_1 / randomNumber_2) == userAnswer ? "That is currect, Great job." : "That is NOT currect, Good luck next time";
-                    Console.WriteLine(result);
-                    numberOfQuestionsAsked++;
-                }
-            }
-            Console.WriteLine("Do you want to play again? ");
-            break;
+        //    Console.WriteLine();
+        //    Console.WriteLine("GAME OVER..\n");
+        //    Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+        //    break;
     }
 }
 
@@ -616,15 +912,8 @@ void Division()
                     } 
 
                 }
-
-
-
-
-                
-
-
+              
             }
-            Console.WriteLine("Do you want to play again? ");
             break;
         case "B":
             while (numberOfQuestionsAsked != userQuestionsChoice)
@@ -657,7 +946,7 @@ void Division()
                 }
 
             }
-            Console.WriteLine("Do you want to play again? ");
+            
             break;
         case "C":
             while (numberOfQuestionsAsked != userQuestionsChoice)
@@ -690,9 +979,10 @@ void Division()
                 }
 
             }
-            Console.WriteLine("Do you want to play again? ");
+            
             break;
     }
 }
 
 Console.ReadLine();
+
