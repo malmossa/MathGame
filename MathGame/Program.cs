@@ -1,10 +1,28 @@
 ﻿Console.Title = "The Math Game";
 
 Header();
-string name = GetUserName();
+Console.Write("First, let's get to know you. What is your name? ");
+string name = Console.ReadLine().ToUpper();
 GreetingMessage(name);
-MenuOptions();
-Game(name);
+
+bool playAgain = true;
+while (playAgain)
+{
+    MenuOptions();
+    Game(name);
+    Console.WriteLine();
+
+    Console.Write("Do you want to play agin? N/Y: ");
+    string input = Console.ReadLine().Trim().ToUpper();
+
+    if(input == "Y") { playAgain = true; }
+    if(input == "N") 
+    { 
+        playAgain = false;
+        Console.WriteLine($"GOOD BY.. {name}");
+        Environment.Exit(0);
+    }
+}
 
 
 
@@ -22,7 +40,6 @@ void Header()
     Console.WriteLine("*******************************************************\n");
     Console.ResetColor();
 }
-
 
 void GreetingMessage(string name)
 {
@@ -47,13 +64,6 @@ void GreetingMessage(string name)
 }
 
 
-string GetUserName()
-{
-    Console.Write("First, let's get to know you. What is your name? ");
-    string name = Console.ReadLine().ToUpper();
-    return name;
-}
-
 void MenuOptions()
 {
     Console.WriteLine(@"
@@ -65,7 +75,6 @@ void MenuOptions()
 'R' Random.
 'E' Exit.");
 }
-
 
 void Game(string name)
 {
@@ -102,6 +111,7 @@ void Game(string name)
             Console.WriteLine("Invalid input..");
             break;
     }
+  
 }
 
 
@@ -154,7 +164,7 @@ void Add()
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
             Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
-            
+                              
             break;
         case "B":
             while (numberOfQuestionsAsked != userQuestionsChoice)
