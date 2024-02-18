@@ -1,4 +1,6 @@
-﻿Console.Title = "The Math Game";
+﻿using System.Diagnostics;
+
+Console.Title = "The Math Game";
 
 Header();
 Console.Write("First, let's get to know you. What is your name? ");
@@ -117,6 +119,7 @@ void Game(string name)
 
 void Add()
 {
+    Stopwatch timer = new Stopwatch();
     Random random = new Random();
     int randomNumber_1 = 0;
     int randomNumber_2 = 0;
@@ -137,6 +140,7 @@ void Add()
 
             while(numberOfQuestionsAsked != userQuestionsChoice)
             {
+                timer.Start();
                 randomNumber_1 = random.Next(1, 10);
                 randomNumber_2 = random.Next(1, 10);
                 Console.Write($"What is {randomNumber_1} + {randomNumber_2} = ");
@@ -159,16 +163,34 @@ void Add()
                     wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
+                timer.Stop();
+
+               
             }
+            
 
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
-                              
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
             break;
         case "B":
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
+                timer.Start();
                 randomNumber_1 = random.Next(1, 50);
                 randomNumber_2 = random.Next(1, 50);
                 Console.Write($"What is {randomNumber_1} + {randomNumber_2} = ");
@@ -192,16 +214,34 @@ void Add()
                     wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
+                timer.Stop();
+
+               
             }
 
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
 
             break;
         case "C":
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
+                timer.Start();
                 randomNumber_1 = random.Next(1, 100);
                 randomNumber_2 = random.Next(1, 100);
                 Console.Write($"What is {randomNumber_1} + {randomNumber_2} = ");
@@ -225,11 +265,25 @@ void Add()
                     wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
+                timer.Stop();
             }
 
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
 
             break;
     }
@@ -994,6 +1048,10 @@ void Division()
             break;
     }
 }
+
+
+
+ 
 
 Console.ReadLine();
 
