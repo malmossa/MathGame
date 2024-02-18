@@ -5,6 +5,9 @@ Console.Title = "The Math Game";
 Header();
 Console.Write("First, let's get to know you. What is your name? ");
 string name = Console.ReadLine().ToUpper();
+
+List<string> gamesHistory = new List<string>();
+
 GreetingMessage(name);
 
 bool playAgain = true;
@@ -14,7 +17,7 @@ while (playAgain)
     Game(name);
     Console.WriteLine();
 
-    Console.Write("Do you want to play agin? N/Y: ");
+    Console.Write("Do you want to play agin or go back to main menu? N/Y: ");
     string input = Console.ReadLine().Trim().ToUpper();
 
     if(input == "Y") { playAgain = true; }
@@ -69,7 +72,7 @@ void GreetingMessage(string name)
 void MenuOptions()
 {
     Console.WriteLine(@"
-'V' View previous games.
+'V' View Games History.
 'A' Add.
 'S' Subtract.
 'M' Multiply.
@@ -88,7 +91,7 @@ void Game(string name)
     switch(userChoice)
     {
         case "V":
-            Console.WriteLine("You chose: V");
+            ViewHistory();
             break;
         case "A":
             Add();
@@ -131,12 +134,12 @@ void Add()
     Console.Write("How many questions do you want your game to be? ");
     int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
 
-    Console.Write("What is the numbers range? 'A' 1 to 10. 'B' 1 to 50. 'C' 1 to 100. Your choise: " );
+    Console.Write("What is the numbers range? 'E' for easy (1 to 10). 'M' for medium (1 to 50). 'D' for difficult (1 to 100). Your choise: " );
     string userChoice = Console.ReadLine().Trim().ToUpper();
 
     switch(userChoice)
     {
-        case "A":
+        case "E":
 
             while(numberOfQuestionsAsked != userQuestionsChoice)
             {
@@ -163,9 +166,7 @@ void Add()
                     wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
-                timer.Stop();
-
-               
+                timer.Stop();              
             }
             
 
@@ -186,8 +187,10 @@ void Add()
             Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
             Console.ResetColor();
 
+            AddToHistory("Additions easy", userQuestionsChoice, correctAnswer, wrongAnswer);
+
             break;
-        case "B":
+        case "M":
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
                 timer.Start();
@@ -215,8 +218,7 @@ void Add()
                     numberOfQuestionsAsked++;
                 }
                 timer.Stop();
-
-               
+             
             }
 
             Console.WriteLine();
@@ -236,9 +238,10 @@ void Add()
             Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
             Console.ResetColor();
 
+            AddToHistory("Additions medium", userQuestionsChoice, correctAnswer, wrongAnswer);
 
             break;
-        case "C":
+        case "D":
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
                 timer.Start();
@@ -285,14 +288,30 @@ void Add()
             Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
             Console.ResetColor();
 
+            AddToHistory("Additions difficult", userQuestionsChoice, correctAnswer, wrongAnswer);
+
             break;
     }
       
 }
 
 
+void AddToHistory(string type, int questions,int correct, int wrong)
+{
+    gamesHistory.Add($"Game Played: {type}, Numbers of Questions: {questions}, Correct Answers: {correct}, Wrong Answers: {wrong}");
+}
+
+void ViewHistory()
+{
+    foreach(string game in gamesHistory)
+    {
+        Console.WriteLine(game);
+    }
+}
+
 void Subtract()
 {
+    Stopwatch timer = new Stopwatch();
     Random random = new Random();
     int randomNumber_1 = 0;
     int randomNumber_2 = 0;
@@ -304,15 +323,16 @@ void Subtract()
     Console.Write("How many questions do you want your game to be? ");
     int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
 
-    Console.Write("What is the numbers range? 'A' 1 to 10. 'B' 1 to 50. 'C' 1 to 100. Your choise: ");
+    Console.Write("What is the numbers range? 'E' for easy (1 to 10). 'M' for medium (1 to 50). 'D' for difficult (1 to 100). Your choise: ");
     string userChoice = Console.ReadLine().Trim().ToUpper();
 
     switch (userChoice)
     {
-        case "A":
+        case "E":
 
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
+                timer.Start();
                 randomNumber_1 = random.Next(1, 10);
                 randomNumber_2 = random.Next(1, 10);
                 Console.Write($"What is {randomNumber_1} - {randomNumber_2} = ");
@@ -336,16 +356,33 @@ void Subtract()
                     wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
+                timer.Stop();
             }
 
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
+            AddToHistory("Subtraction easy", userQuestionsChoice, correctAnswer, wrongAnswer);
 
             break;
-        case "B":
+        case "M":
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
+                timer.Start();
                 randomNumber_1 = random.Next(1, 50);
                 randomNumber_2 = random.Next(1, 50);
                 Console.Write($"What is {randomNumber_1} - {randomNumber_2} = ");
@@ -369,16 +406,33 @@ void Subtract()
                     wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
+                timer.Stop();
             }
 
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
+            AddToHistory("Subtraction medium", userQuestionsChoice, correctAnswer, wrongAnswer);
 
             break;
-        case "C":
+        case "D":
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
+                timer.Start();
                 randomNumber_1 = random.Next(1, 100);
                 randomNumber_2 = random.Next(1, 100);
                 Console.Write($"What is {randomNumber_1} - {randomNumber_2} = ");
@@ -402,11 +456,27 @@ void Subtract()
                     wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
+                timer.Stop();
             }
 
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
+            AddToHistory("Subtraction difficult", userQuestionsChoice, correctAnswer, wrongAnswer);
 
             break;
     }
@@ -1048,7 +1118,6 @@ void Division()
             break;
     }
 }
-
 
 
  
