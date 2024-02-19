@@ -29,8 +29,6 @@ while (playAgain)
     }
 }
 
-
-
 void Header()
 {
  Console.WriteLine(@"
@@ -67,7 +65,6 @@ void GreetingMessage(string name)
     }
 
 }
-
 
 void MenuOptions()
 {
@@ -118,7 +115,6 @@ void Game(string name)
     }
   
 }
-
 
 void Add()
 {
@@ -294,7 +290,6 @@ void Add()
     }
       
 }
-
 
 void AddToHistory(string type, int questions,int correct, int wrong)
 {
@@ -865,6 +860,7 @@ void Division()
 }
 void Random()
 {
+    Stopwatch timer = new Stopwatch();
     Random random = new Random();
 
     int randomNumber_1 = 0;
@@ -879,14 +875,15 @@ void Random()
     Console.Write("How many questions do you want your game to be? ");
     int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
 
-    Console.Write("What is the numbers range? 'A' 1 to 10. 'B' 1 to 50. 'C' 1 to 100. Your choise: ");
+    Console.Write("What is the numbers range? 'E' for easy (1 to 10). 'M' for medium (1 to 50). 'D' for difficult (1 to 100). Your choise: ");
     string userChoice = Console.ReadLine().Trim().ToUpper();
 
-    switch (userChoice)
+    switch(userChoice)
     {
-        case "A":
-            while (numberOfQuestionsAsked != userQuestionsChoice)
+        case "E":
+            while(numberOfQuestionsAsked != userQuestionsChoice)
             {
+                timer.Start();
                 randomNumber_1 = random.Next(1, 11);
                 randomNumber_2 = random.Next(1, 11);
 
@@ -894,7 +891,7 @@ void Random()
 
                 string operation = string.Empty;
 
-                switch (randomOperation)
+                switch(randomOperation)
                 {
                     case 1:
                         operation = "+";
@@ -915,7 +912,6 @@ void Random()
 
                 if (operation == "+")
                 {
-
                     if ((randomNumber_1 + randomNumber_2) == userAnswer)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -923,6 +919,7 @@ void Random()
                         Console.ResetColor();
 
                         correctAnswer++;
+                        numberOfQuestionsAsked++;
                     }
                     else
                     {
@@ -931,13 +928,12 @@ void Random()
                         Console.ResetColor();
 
                         wrongAnswer++;
+                        numberOfQuestionsAsked++;
                     }
-                  
-                    numberOfQuestionsAsked++;
                 }
+
                 if (operation == "-")
                 {
-
                     if ((randomNumber_1 - randomNumber_2) == userAnswer)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -945,6 +941,7 @@ void Random()
                         Console.ResetColor();
 
                         correctAnswer++;
+                        numberOfQuestionsAsked++;
                     }
                     else
                     {
@@ -953,13 +950,12 @@ void Random()
                         Console.ResetColor();
 
                         wrongAnswer++;
+                        numberOfQuestionsAsked++;
                     }
-
-                    numberOfQuestionsAsked++;
                 }
+
                 if (operation == "*")
                 {
-
                     if ((randomNumber_1 * randomNumber_2) == userAnswer)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -967,6 +963,7 @@ void Random()
                         Console.ResetColor();
 
                         correctAnswer++;
+                        numberOfQuestionsAsked++;
                     }
                     else
                     {
@@ -975,13 +972,12 @@ void Random()
                         Console.ResetColor();
 
                         wrongAnswer++;
+                        numberOfQuestionsAsked++;
                     }
-
-                    numberOfQuestionsAsked++;
                 }
+
                 if (operation == "/")
                 {
-                                                       
                     if ((randomNumber_1 / randomNumber_2) == userAnswer)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -989,6 +985,7 @@ void Random()
                         Console.ResetColor();
 
                         correctAnswer++;
+                        numberOfQuestionsAsked++;
                     }
                     else
                     {
@@ -997,21 +994,36 @@ void Random()
                         Console.ResetColor();
 
                         wrongAnswer++;
+                        numberOfQuestionsAsked++;
                     }
-
-                     numberOfQuestionsAsked++;
-                           
-                                                                                                            
                 }
+
+                timer.Stop();
             }
 
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
+            AddToHistory("Random easy", userQuestionsChoice, correctAnswer, wrongAnswer);
             break;
-        case "B":
+        case "M":
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
+                timer.Start();
                 randomNumber_1 = random.Next(1, 51);
                 randomNumber_2 = random.Next(1, 51);
 
@@ -1035,13 +1047,11 @@ void Random()
                         break;
                 }
 
-
                 Console.Write($"What is {randomNumber_1} {operation} {randomNumber_2} = ");
                 int userAnswer = Convert.ToInt32(Console.ReadLine());
 
                 if (operation == "+")
                 {
-
                     if ((randomNumber_1 + randomNumber_2) == userAnswer)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -1049,6 +1059,7 @@ void Random()
                         Console.ResetColor();
 
                         correctAnswer++;
+                        numberOfQuestionsAsked++;
                     }
                     else
                     {
@@ -1057,13 +1068,12 @@ void Random()
                         Console.ResetColor();
 
                         wrongAnswer++;
+                        numberOfQuestionsAsked++;
                     }
-
-                    numberOfQuestionsAsked++;
                 }
+
                 if (operation == "-")
                 {
-
                     if ((randomNumber_1 - randomNumber_2) == userAnswer)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -1071,6 +1081,7 @@ void Random()
                         Console.ResetColor();
 
                         correctAnswer++;
+                        numberOfQuestionsAsked++;
                     }
                     else
                     {
@@ -1079,13 +1090,12 @@ void Random()
                         Console.ResetColor();
 
                         wrongAnswer++;
+                        numberOfQuestionsAsked++;
                     }
-
-                    numberOfQuestionsAsked++;
                 }
+
                 if (operation == "*")
                 {
-
                     if ((randomNumber_1 * randomNumber_2) == userAnswer)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -1093,6 +1103,7 @@ void Random()
                         Console.ResetColor();
 
                         correctAnswer++;
+                        numberOfQuestionsAsked++;
                     }
                     else
                     {
@@ -1101,13 +1112,12 @@ void Random()
                         Console.ResetColor();
 
                         wrongAnswer++;
+                        numberOfQuestionsAsked++;
                     }
-
-                    numberOfQuestionsAsked++;
                 }
+
                 if (operation == "/")
                 {
-
                     if ((randomNumber_1 / randomNumber_2) == userAnswer)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -1115,6 +1125,7 @@ void Random()
                         Console.ResetColor();
 
                         correctAnswer++;
+                        numberOfQuestionsAsked++;
                     }
                     else
                     {
@@ -1123,22 +1134,38 @@ void Random()
                         Console.ResetColor();
 
                         wrongAnswer++;
+                        numberOfQuestionsAsked++;
                     }
-
-                    numberOfQuestionsAsked++;
                 }
+
+                timer.Stop();
             }
 
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
 
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
+            AddToHistory("Random medium", userQuestionsChoice, correctAnswer, wrongAnswer);
             break;
-        case "C":
+        case "D":
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
-                randomNumber_2 = random.Next(1, 101);
+                timer.Start();
                 randomNumber_1 = random.Next(1, 101);
+                randomNumber_2 = random.Next(1, 101);
 
                 int randomOperation = random.Next(1, 5);
 
@@ -1160,13 +1187,11 @@ void Random()
                         break;
                 }
 
-
                 Console.Write($"What is {randomNumber_1} {operation} {randomNumber_2} = ");
                 int userAnswer = Convert.ToInt32(Console.ReadLine());
 
                 if (operation == "+")
                 {
-
                     if ((randomNumber_1 + randomNumber_2) == userAnswer)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -1174,6 +1199,7 @@ void Random()
                         Console.ResetColor();
 
                         correctAnswer++;
+                        numberOfQuestionsAsked++;
                     }
                     else
                     {
@@ -1182,13 +1208,12 @@ void Random()
                         Console.ResetColor();
 
                         wrongAnswer++;
+                        numberOfQuestionsAsked++;
                     }
-
-                    numberOfQuestionsAsked++;
                 }
+
                 if (operation == "-")
                 {
-
                     if ((randomNumber_1 - randomNumber_2) == userAnswer)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -1196,6 +1221,7 @@ void Random()
                         Console.ResetColor();
 
                         correctAnswer++;
+                        numberOfQuestionsAsked++;
                     }
                     else
                     {
@@ -1204,13 +1230,12 @@ void Random()
                         Console.ResetColor();
 
                         wrongAnswer++;
+                        numberOfQuestionsAsked++;
                     }
-
-                    numberOfQuestionsAsked++;
                 }
+
                 if (operation == "*")
                 {
-
                     if ((randomNumber_1 * randomNumber_2) == userAnswer)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -1218,6 +1243,7 @@ void Random()
                         Console.ResetColor();
 
                         correctAnswer++;
+                        numberOfQuestionsAsked++;
                     }
                     else
                     {
@@ -1226,13 +1252,12 @@ void Random()
                         Console.ResetColor();
 
                         wrongAnswer++;
+                        numberOfQuestionsAsked++;
                     }
-
-                    numberOfQuestionsAsked++;
                 }
+
                 if (operation == "/")
                 {
-
                     if ((randomNumber_1 / randomNumber_2) == userAnswer)
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -1240,6 +1265,7 @@ void Random()
                         Console.ResetColor();
 
                         correctAnswer++;
+                        numberOfQuestionsAsked++;
                     }
                     else
                     {
@@ -1248,24 +1274,36 @@ void Random()
                         Console.ResetColor();
 
                         wrongAnswer++;
+                        numberOfQuestionsAsked++;
                     }
-
-                    numberOfQuestionsAsked++;
                 }
+
+                timer.Stop();
             }
 
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
+            AddToHistory("Random difficult", userQuestionsChoice, correctAnswer, wrongAnswer);
             break;
     }
-
-
+  
 }
 
-
-
- 
 
 Console.ReadLine();
 
