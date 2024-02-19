@@ -144,8 +144,8 @@ void Add()
             while(numberOfQuestionsAsked != userQuestionsChoice)
             {
                 timer.Start();
-                randomNumber_1 = random.Next(1, 10);
-                randomNumber_2 = random.Next(1, 10);
+                randomNumber_1 = random.Next(1, 11);
+                randomNumber_2 = random.Next(1, 11);
                 Console.Write($"What is {randomNumber_1} + {randomNumber_2} = ");
                 int userAnswer = Convert.ToInt32(Console.ReadLine());
 
@@ -194,8 +194,8 @@ void Add()
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
                 timer.Start();
-                randomNumber_1 = random.Next(1, 50);
-                randomNumber_2 = random.Next(1, 50);
+                randomNumber_1 = random.Next(1, 51);
+                randomNumber_2 = random.Next(1, 51);
                 Console.Write($"What is {randomNumber_1} + {randomNumber_2} = ");
                 int userAnswer = Convert.ToInt32(Console.ReadLine());
 
@@ -245,8 +245,8 @@ void Add()
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
                 timer.Start();
-                randomNumber_1 = random.Next(1, 100);
-                randomNumber_2 = random.Next(1, 100);
+                randomNumber_1 = random.Next(1, 101);
+                randomNumber_2 = random.Next(1, 101);
                 Console.Write($"What is {randomNumber_1} + {randomNumber_2} = ");
                 int userAnswer = Convert.ToInt32(Console.ReadLine());
 
@@ -485,6 +485,7 @@ void Subtract()
 
 void Multiply()
 {
+    Stopwatch timer = new Stopwatch();
     Random random = new Random();
     int randomNumber_1 = 0;
     int randomNumber_2 = 0;
@@ -496,15 +497,16 @@ void Multiply()
     Console.Write("How many questions do you want your game to be? ");
     int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
 
-    Console.Write("What is the numbers range? 'A' 1 to 10. 'B' 1 to 50. 'C' 1 to 100. Your choise: ");
+    Console.Write("What is the numbers range? 'E' for easy (1 to 10). 'M' for medium (1 to 50). 'D' for difficult (1 to 100). Your choise: ");
     string userChoice = Console.ReadLine().Trim().ToUpper();
 
     switch (userChoice)
     {
-        case "A":
+        case "E":
 
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
+                timer.Start();
                 randomNumber_1 = random.Next(1, 10);
                 randomNumber_2 = random.Next(1, 10);
                 Console.Write($"What is {randomNumber_1} x {randomNumber_2} = ");
@@ -528,16 +530,33 @@ void Multiply()
                     wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
+                timer.Stop();
             }
 
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
+            AddToHistory("Multiplication easy", userQuestionsChoice, correctAnswer, wrongAnswer);
 
             break;
-        case "B":
+        case "M":
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
+                timer.Start();
                 randomNumber_1 = random.Next(1, 50);
                 randomNumber_2 = random.Next(1, 50);
                 Console.Write($"What is {randomNumber_1} x {randomNumber_2} = ");
@@ -561,16 +580,33 @@ void Multiply()
                     wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
+                timer.Stop();
             }
 
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
+            AddToHistory("Multiplication medium", userQuestionsChoice, correctAnswer, wrongAnswer);
 
             break;
-        case "C":
+        case "D":
             while (numberOfQuestionsAsked != userQuestionsChoice)
             {
+                timer.Start();
                 randomNumber_1 = random.Next(1, 100);
                 randomNumber_2 = random.Next(1, 100);
                 Console.Write($"What is {randomNumber_1} x {randomNumber_2} = ");
@@ -594,17 +630,239 @@ void Multiply()
                     wrongAnswer++;
                     numberOfQuestionsAsked++;
                 }
+                timer.Stop();
             }
 
             Console.WriteLine();
             Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
+            AddToHistory("Multiplication difficult", userQuestionsChoice, correctAnswer, wrongAnswer);
+
 
             break;
     }
 
 }
 
+void Division()
+{
+    Stopwatch timer = new Stopwatch();
+    Random random = new Random();
+    int randomNumber_1 = 0;
+    int randomNumber_2 = 0;
+    int numberOfQuestionsAsked = 0;
+
+    int correctAnswer = 0;
+    int wrongAnswer = 0;
+
+    Console.Write("How many questions do you want your game to be? ");
+    int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("What is the numbers range? 'E' for easy (1 to 10). 'M' for medium (1 to 50). 'D' for difficult (1 to 100). Your choise: ");
+    string userChoice = Console.ReadLine().Trim().ToUpper();
+
+    switch (userChoice)
+    {
+        case "E":
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                bool isInteger = true;
+
+                while(isInteger)
+                {
+                    timer.Start();
+                    randomNumber_1 = random.Next(1, 11);
+                    randomNumber_2 = random.Next(1, 11);
+
+                    if(randomNumber_1 % randomNumber_2 == 0)
+                    {
+                        Console.Write($"What is {randomNumber_1} / {randomNumber_2} = ");
+                        int userAnswer = Convert.ToInt32(Console.ReadLine());
+           
+                        if ((randomNumber_1 / randomNumber_2) == userAnswer)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("CORRECT!");
+                            Console.ResetColor();
+
+                            correctAnswer++;
+                            numberOfQuestionsAsked++;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine($"Sorry wrong!");
+                            Console.ResetColor();
+
+                            wrongAnswer++;
+                            numberOfQuestionsAsked++;
+                        }
+                        isInteger = false;
+                    } 
+                    timer.Stop();
+
+                }
+              
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("GAME OVER..\n");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
+            AddToHistory("Division easy", userQuestionsChoice, correctAnswer, wrongAnswer);
+            break;
+        case "M":
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                bool isInteger = true;
+
+                while (isInteger)
+                {
+                    timer.Start();
+                    randomNumber_1 = random.Next(1, 51);
+                    randomNumber_2 = random.Next(1, 51);
+
+                    if (randomNumber_1 % randomNumber_2 == 0)
+                    {
+                        Console.Write($"What is {randomNumber_1} / {randomNumber_2} = ");
+                        int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                        if ((randomNumber_1 / randomNumber_2) == userAnswer)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("CORRECT!");
+                            Console.ResetColor();
+
+                            correctAnswer++;
+                            numberOfQuestionsAsked++;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine($"Sorry wrong!");
+                            Console.ResetColor();
+
+                            wrongAnswer++;
+                            numberOfQuestionsAsked++;
+                        }
+                        isInteger = false;
+                    }
+                    timer.Stop();
+
+                }
+
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("GAME OVER..\n");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
+            AddToHistory("Division easy", userQuestionsChoice, correctAnswer, wrongAnswer);
+
+            break;
+        case "D":
+            while (numberOfQuestionsAsked != userQuestionsChoice)
+            {
+                bool isInteger = true;
+
+                while (isInteger)
+                {
+                    timer.Start();
+                    randomNumber_1 = random.Next(1, 101);
+                    randomNumber_2 = random.Next(1, 101);
+
+                    if (randomNumber_1 % randomNumber_2 == 0)
+                    {
+                        Console.Write($"What is {randomNumber_1} / {randomNumber_2} = ");
+                        int userAnswer = Convert.ToInt32(Console.ReadLine());
+
+                        if ((randomNumber_1 / randomNumber_2) == userAnswer)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("CORRECT!");
+                            Console.ResetColor();
+
+                            correctAnswer++;
+                            numberOfQuestionsAsked++;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine($"Sorry wrong!");
+                            Console.ResetColor();
+
+                            wrongAnswer++;
+                            numberOfQuestionsAsked++;
+                        }
+                        isInteger = false;
+                    }
+                    timer.Stop();
+                }
+
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("GAME OVER..\n");
+            Console.WriteLine("Game Result: ");
+            Console.WriteLine("------------------");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Correct: {correctAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Wrong: {wrongAnswer}");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
+            Console.ResetColor();
+
+            AddToHistory("Division easy", userQuestionsChoice, correctAnswer, wrongAnswer);
+
+            break;
+    }
+}
 void Random()
 {
     Random random = new Random();
@@ -1001,123 +1259,10 @@ void Random()
             Console.WriteLine($"Your result: {correctAnswer} correct, and {wrongAnswer} wrong.");
             break;
     }
+
+
 }
 
-void Division()
-{
-    Random random = new Random();
-    int randomNumber_1 = 0;
-    int randomNumber_2 = 0;
-    int numberOfQuestionsAsked = 0;
-
-    Console.Write("How many questions do you want your game to be? ");
-    int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
-
-    Console.Write("What is the numbers range? 'A' 1 to 10. 'B' 1 to 50. 'C' 1 to 100. Your choise: ");
-    string userChoice = Console.ReadLine().Trim().ToUpper();
-
-    switch (userChoice)
-    {
-        case "A":
-            while (numberOfQuestionsAsked != userQuestionsChoice)
-            {
-                bool isInteger = true;
-
-                while(isInteger)
-                {
-                    randomNumber_1 = random.Next(1, 11);
-                    randomNumber_2 = random.Next(1, 11);
-
-                    if(randomNumber_1 % randomNumber_2 == 0)
-                    {
-                        Console.Write($"What is {randomNumber_1} / {randomNumber_2} = ");
-                        int userAnswer = Convert.ToInt32(Console.ReadLine());
-           
-                        if ((randomNumber_1 / randomNumber_2) == userAnswer)
-                        {
-                            Console.WriteLine($"That is currect, Great job.");
-                            numberOfQuestionsAsked++;
-                        }
-                        else
-                        {
-                            Console.WriteLine($"That is NOT currect, Good luck next time");
-                            numberOfQuestionsAsked++;
-                        }
-                        isInteger = false;
-                    } 
-
-                }
-              
-            }
-            break;
-        case "B":
-            while (numberOfQuestionsAsked != userQuestionsChoice)
-            {
-                bool isInteger = true;
-
-                while (isInteger)
-                {
-                    randomNumber_1 = random.Next(1, 50);
-                    randomNumber_2 = random.Next(1, 50);
-
-                    if (randomNumber_1 % randomNumber_2 == 0)
-                    {
-                        Console.Write($"What is {randomNumber_1} / {randomNumber_2} = ");
-                        int userAnswer = Convert.ToInt32(Console.ReadLine());
-
-                        if ((randomNumber_1 / randomNumber_2) == userAnswer)
-                        {
-                            Console.WriteLine($"That is currect, Great job.");
-                            numberOfQuestionsAsked++;
-                        }
-                        else
-                        {
-                            Console.WriteLine($"That is NOT currect, Good luck next time");
-                            numberOfQuestionsAsked++;
-                        }
-                        isInteger = false;
-                    }
-
-                }
-
-            }
-            
-            break;
-        case "C":
-            while (numberOfQuestionsAsked != userQuestionsChoice)
-            {
-                bool isInteger = true;
-
-                while (isInteger)
-                {
-                    randomNumber_1 = random.Next(1, 100);
-                    randomNumber_2 = random.Next(1, 100);
-
-                    if (randomNumber_1 % randomNumber_2 == 0)
-                    {
-                        Console.Write($"What is {randomNumber_1} / {randomNumber_2} = ");
-                        int userAnswer = Convert.ToInt32(Console.ReadLine());
-
-                        if ((randomNumber_1 / randomNumber_2) == userAnswer)
-                        {
-                            Console.WriteLine($"That is currect, Great job.");
-                            numberOfQuestionsAsked++;
-                        }
-                        else
-                        {
-                            Console.WriteLine($"That is NOT currect, Good luck next time");
-                            numberOfQuestionsAsked++;
-                        }
-                        isInteger = false;
-                    }
-
-                }
-
-            }
-            
-            break;
-    }
-}
 
 
  
