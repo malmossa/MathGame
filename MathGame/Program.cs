@@ -127,6 +127,8 @@ void Add()
     int correctAnswer = 0;
     int wrongAnswer = 0;
 
+    string gameTime;
+
     Console.Write("How many questions do you want your game to be? ");
     int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
 
@@ -164,26 +166,10 @@ void Add()
                 }
                 timer.Stop();              
             }
-            
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Additions easy", userQuestionsChoice, correctAnswer, wrongAnswer);
+            GameResult("Addition ", "easy", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
             break;
         case "M":
@@ -217,24 +203,9 @@ void Add()
              
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Additions medium", userQuestionsChoice, correctAnswer, wrongAnswer);
+            GameResult("Addition ", "medium", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
             break;
         case "D":
@@ -267,41 +238,13 @@ void Add()
                 timer.Stop();
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Additions difficult", userQuestionsChoice, correctAnswer, wrongAnswer);
+            GameResult("Addition ", "difficult", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
             break;
     }
       
-}
-
-void AddToHistory(string type, int questions,int correct, int wrong)
-{
-    gamesHistory.Add($"Game Played: {type}, Numbers of Questions: {questions}, Correct Answers: {correct}, Wrong Answers: {wrong}");
-}
-
-void ViewHistory()
-{
-    foreach(string game in gamesHistory)
-    {
-        Console.WriteLine(game);
-    }
 }
 
 void Subtract()
@@ -314,6 +257,8 @@ void Subtract()
 
     int correctAnswer = 0;
     int wrongAnswer = 0;
+
+    string gameTime;
 
     Console.Write("How many questions do you want your game to be? ");
     int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
@@ -354,24 +299,9 @@ void Subtract()
                 timer.Stop();
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Subtraction easy", userQuestionsChoice, correctAnswer, wrongAnswer);
+            GameResult("Subtraction ", "easy", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
             break;
         case "M":
@@ -404,24 +334,9 @@ void Subtract()
                 timer.Stop();
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Subtraction medium", userQuestionsChoice, correctAnswer, wrongAnswer);
+            GameResult("Subtraction ", "medium", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
             break;
         case "D":
@@ -454,24 +369,9 @@ void Subtract()
                 timer.Stop();
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Subtraction difficult", userQuestionsChoice, correctAnswer, wrongAnswer);
+            GameResult("Subtraction ", "difficult", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
             break;
     }
@@ -489,6 +389,8 @@ void Multiply()
     int correctAnswer = 0;
     int wrongAnswer = 0;
 
+    string gameTime;
+
     Console.Write("How many questions do you want your game to be? ");
     int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
 
@@ -528,24 +430,9 @@ void Multiply()
                 timer.Stop();
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Multiplication easy", userQuestionsChoice, correctAnswer, wrongAnswer);
+            GameResult("Multiplication ", "easy", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
             break;
         case "M":
@@ -578,24 +465,9 @@ void Multiply()
                 timer.Stop();
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Multiplication medium", userQuestionsChoice, correctAnswer, wrongAnswer);
+            GameResult("Multiplication ", "medium", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
             break;
         case "D":
@@ -628,25 +500,9 @@ void Multiply()
                 timer.Stop();
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Multiplication difficult", userQuestionsChoice, correctAnswer, wrongAnswer);
-
+            GameResult("Multiplication ", "difficult", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
             break;
     }
@@ -663,6 +519,8 @@ void Division()
 
     int correctAnswer = 0;
     int wrongAnswer = 0;
+
+    string gameTime;
 
     Console.Write("How many questions do you want your game to be? ");
     int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
@@ -714,24 +572,10 @@ void Division()
               
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
+            GameResult("Division ", "easy", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Division easy", userQuestionsChoice, correctAnswer, wrongAnswer);
             break;
         case "M":
             while (numberOfQuestionsAsked != userQuestionsChoice)
@@ -775,24 +619,9 @@ void Division()
 
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Division easy", userQuestionsChoice, correctAnswer, wrongAnswer);
+            GameResult("Division ", "medium", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
             break;
         case "D":
@@ -836,24 +665,9 @@ void Division()
 
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Division easy", userQuestionsChoice, correctAnswer, wrongAnswer);
+            GameResult("Division ", "difficult", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
             break;
     }
@@ -871,6 +685,8 @@ void Random()
 
     int correctAnswer = 0;
     int wrongAnswer = 0;
+
+    string gameTime;
 
     Console.Write("How many questions do you want your game to be? ");
     int userQuestionsChoice = Convert.ToInt32(Console.ReadLine());
@@ -1001,24 +817,10 @@ void Random()
                 timer.Stop();
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
+            GameResult("Random ", "easy", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Random easy", userQuestionsChoice, correctAnswer, wrongAnswer);
             break;
         case "M":
             while (numberOfQuestionsAsked != userQuestionsChoice)
@@ -1141,24 +943,10 @@ void Random()
                 timer.Stop();
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
+            GameResult("Random ", "medium", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Random medium", userQuestionsChoice, correctAnswer, wrongAnswer);
             break;
         case "D":
             while (numberOfQuestionsAsked != userQuestionsChoice)
@@ -1281,29 +1069,47 @@ void Random()
                 timer.Stop();
             }
 
-            Console.WriteLine();
-            Console.WriteLine("GAME OVER..\n");
-            Console.WriteLine("Game Result: ");
-            Console.WriteLine("------------------");
+            gameTime = timer.Elapsed.ToString("mm\\:ss");
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Correct: {correctAnswer}");
-            Console.ResetColor();
+            GameResult("Random ", "difficult", numberOfQuestionsAsked, correctAnswer, wrongAnswer, gameTime);
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"Wrong: {wrongAnswer}");
-            Console.ResetColor();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Time: {timer.Elapsed.ToString("mm\\:ss")}");
-            Console.ResetColor();
-
-            AddToHistory("Random difficult", userQuestionsChoice, correctAnswer, wrongAnswer);
             break;
     }
   
 }
+void ViewHistory()
+{
+    foreach(string game in gamesHistory)
+    {
+        Console.WriteLine(game);
+    }
+}
+void AddToHistory(string type, string difficulty, int questions,int correct, int wrong)
+{
+    gamesHistory.Add($"Game Played: {type}{difficulty}, Numbers of Questions: {questions}, Correct Answers: {correct}, Wrong Answers: {wrong}");
+}
 
+void GameResult(string type, string difficulty, int questions, int correct, int wrong, string time)
+{
+    Console.WriteLine();
+    Console.WriteLine("GAME OVER..\n");
+    Console.WriteLine("Game Result: ");
+    Console.WriteLine("------------------");
+
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"Correct: {correct}");
+    Console.ResetColor();
+
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine($"Wrong: {wrong}");
+    Console.ResetColor();
+
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine($"Time: {time}");
+    Console.ResetColor();
+
+    AddToHistory(type, difficulty, questions, correct, wrong);
+}
 
 Console.ReadLine();
 
